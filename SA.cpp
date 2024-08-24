@@ -51,10 +51,10 @@ void SA()
         while (T > 0.0001) {
             if(T < 200) {
                 SAmax = 300;
-                alfa = 0.98;
+                alfa = 0.99;
             } else if (T < 10) {
-                SAmax = 200;
-                alfa = 0.97;
+                SAmax = 500;
+                alfa = 0.98;
             } else if (T < 1) {
                 SAmax = 1000;
                 alfa = 0.97;
@@ -122,7 +122,7 @@ void SA()
             } //Fim-SAmax
 
             if (debug)
-                printf("\nT = %.4f \t FO = %.2lf \t melhorFO = %.2lf", T, floorf(s.objFValue*10)/10, floorf(bestSolution.objFValue*10)/10);
+                printf("\nT = %.4f \t FO = %.2lf \t melhorFO = %.2lf", T, s.objFValue, bestSolution.objFValue);
 
             T = T * alfa;
             IterT = 0;

@@ -2,8 +2,8 @@
 #define _PROBLEM_H
 
 #define INFINITO 999999999
-#define BAD_SOLUTION 100000
-#define FACTOR_MULT 100
+#define BAD_SOLUTION_EXTRA 1000000
+#define FACTOR_MULT 1000
 #define NUM_MODES 4
 #define C 1
 #define CC 2

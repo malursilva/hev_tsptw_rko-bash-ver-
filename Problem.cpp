@@ -226,6 +226,7 @@ void Decoder1(TSol &s) {
     auxNode.serviceTime = serviceTime[0];
     auxNode.timeWindow_start = timeWindows[0];
     auxNode.timeWindow_end = timeWindows[1];
+    auxNode.departure_time = 0.0;
     nodes[0] = auxNode;
 
     // Add customers in the order they'll be visited
@@ -247,34 +248,32 @@ void Decoder1(TSol &s) {
         auxEdge.cost = getCost(nodeA, nodeB, auxEdge.mode);
         auxEdge.time = getTime(nodeA, nodeB, auxEdge.mode);
         edges[i] = auxEdge;
-//        printf("\n%d->%d | mode: %d | cost: %.2f | time: %.2f", edges[i].nodeStart, edges[i].nodeEnd, edges[i].mode, edges[i].cost, edges[i].time);
     }
-//    printf("\n");
 
     // Verify if path is viable
 
     // First check if the time-windows are begin respected
-    int m = edges.size();
+    int m = edges.size(), endIndex;
     double auxTime = 0.0;
     long double factor = 0.0;
 
     for(int i=0; i<m; i++) {
-        auxTime += edges[i].time;  // sums the time spent to get to the node
+        endIndex = (i+1) % nodes.size();
+        auxTime = nodes[i].departure_time + edges[i].time;
         
-        if(auxTime < nodes[edges[i].nodeEnd].timeWindow_start) { // arrive earlier or later than needed 
-            factor += BAD_SOLUTION * (nodes[edges[i].nodeEnd].timeWindow_start - auxTime);
-        } else if(auxTime > nodes[edges[i].nodeEnd].timeWindow_end) {
-            factor += BAD_SOLUTION * (auxTime - nodes[edges[i].nodeEnd].timeWindow_end);
+        if (auxTime < nodes[endIndex].timeWindow_start && edges[i].nodeEnd != 0) { // arrive earlier than time window start is valid
+            nodes[endIndex].departure_time = nodes[endIndex].timeWindow_start + nodes[endIndex].serviceTime; // in this case the depature time will be always valid
+        } else {
+            if(edges[i].nodeEnd != 0) 
+                nodes[endIndex].departure_time = auxTime + nodes[endIndex].serviceTime;
+            
+            if(auxTime > nodes[endIndex].timeWindow_end) { // arrived later than window
+                factor += FACTOR_MULT * (auxTime - nodes[endIndex].timeWindow_end);
+            } else if (nodes[endIndex].departure_time > nodes[endIndex].timeWindow_end) { // left later than needed
+                factor += FACTOR_MULT * (nodes[endIndex].departure_time - nodes[endIndex].timeWindow_end);
+            }
         }
-
-        auxTime += serviceTime[edges[i].nodeEnd]; // add service time of target node
-        
-        if(auxTime > nodes[edges[i].nodeEnd].timeWindow_end) // will leave later than needed
-            factor += BAD_SOLUTION * (auxTime - nodes[edges[i].nodeEnd].timeWindow_end);
-
-//        printf("\n%d->%d | mode: %d | sum time: %.2f | objFV: %.2f", edges[i].nodeStart, edges[i].nodeEnd, edges[i].mode, auxTime, s.objFValue);    
     }
-//    printf("\n");
 
     // Calculate the costs, checking the battery level
     double level = initialCharge;
@@ -289,7 +288,7 @@ void Decoder1(TSol &s) {
             case E:
                 level -= dischargeRate * edges[i].time;
                 if (level < 0) {
-                    factor += BAD_SOLUTION * level * -1;
+                    factor += FACTOR_MULT * level * -1;
                     level = 0;
                 }
             break;
@@ -297,7 +296,7 @@ void Decoder1(TSol &s) {
             case B:
                 level -= dischargeRate * edges[i].time;
                 if (level < 0) {
-                    factor += BAD_SOLUTION * level * -1;
+                    factor += FACTOR_MULT * level * -1;
                     level = 0;
                 }
             break;
@@ -306,14 +305,11 @@ void Decoder1(TSol &s) {
             break;
         }
         s.objFValue += edges[i].cost;
-//        printf("\n%d->%d | mode: %d | battery level: %.2f | objFV: %.2f", edges[i].nodeStart, edges[i].nodeEnd, edges[i].mode, level, s.objFValue);      
     }
 
-//    printf("\n Factor: %.2Lf | Objf: %.2f  | ", factor, s.objFValue);
-//    for(int i=0; i<nCustomers; i++)
-//        printf("%d ", s.vector[i].value);
-
-    s.objFValue += factor;    
+    if (factor > 0) {
+        s.objFValue += factor + BAD_SOLUTION_EXTRA;
+    }   
    
     // return initial random-key sequence and maintain the solution sequence
     for (int i=0; i<n; i++){
@@ -348,9 +344,6 @@ void Decoder2(TSol &s) {
     vector<TNode>::iterator nodePos;
     vector<TEdge>::iterator edgePos;
     vector<TInfo> infoDataVector;
-    vector<double> auxVector;
-    int index, nodeA, nodeB;
-    double auxTime;
     
     // Add depot node
     auxNode.node = 0;
@@ -363,6 +356,7 @@ void Decoder2(TSol &s) {
     // Add customers by the order given
     for(int i=0; i<nCustomers; i++) {
         // For each i that will be inserted, calculate the Info distance/costs to all possible positions to be inserted
+        infoDataVector.clear();
         auxPosInfo.node = s.vector[i].value;
         auxPosInfo.mode = s.vector[i + nCustomers].value;
         auxPosInfo.service_time = serviceTime[auxPosInfo.node];
@@ -407,7 +401,6 @@ void Decoder2(TSol &s) {
         auxNode.timeWindow_start = timeWindows[auxNode.node*2];
         auxNode.timeWindow_end = timeWindows[(auxNode.node*2)+1];
         auxNode.serviceTime = serviceTime[auxNode.node];
-        auxNode.departure_time = auxPosInfo.end_service;
         
         nodePos = (nodes.begin() + auxPosInfo.pos);
         nodes.insert(nodePos, auxNode);
@@ -423,13 +416,9 @@ void Decoder2(TSol &s) {
     auxEdge.mode = s.vector[n-1].value;
     edges.push_back(auxEdge);
 
-/*   printf("\nTest edges: ");
-    for(int k=0; k<edges.size(); k++) printf("(%d - %d (%d): %.2f|%.2f)", edges[k].nodeStart, edges[k].nodeEnd, edges[k].mode, edges[k].cost, edges[k].time);
-    getchar(); 
-*/
     int n = nodes.size();
     double level = initialCharge;
-    double factor = 0.0;
+    double factor = 0.0, auxTime = 0.0;
 
     for(int i=0; i<edges.size(); i++) {
         edges[i].nodeStart = nodes[i].node;
@@ -461,21 +450,39 @@ void Decoder2(TSol &s) {
             level = 0.0;
         }
 
-        s.objFValue += edges[i].cost;
-//        printf("\n(%d - %d)(%d) c:%.2f  t:%.2f  || B_level:%.2f  ||  current objF = %.2f", edges[i].nodeStart, edges[i].nodeEnd, edges[i].mode, edges[i].cost, edges[i].time, level, s.objFValue);
-//        getchar();        
+        auxTime = nodes[i].departure_time + edges[i].time;
+        
+        if (auxTime < nodes[(i+1)%n].timeWindow_start && edges[i].nodeEnd != 0) { // arrive earlier than time window start is valid
+            nodes[(i+1)%n].departure_time = nodes[(i+1)%n].timeWindow_start + nodes[(i+1)%n].serviceTime; // in this case the depature time will be always valid
+        } else {
+            if(edges[i].nodeEnd != 0) 
+                nodes[(i+1)%n].departure_time = auxTime + nodes[(i+1)%n].serviceTime;
+            
+            if(auxTime > nodes[(i+1)%n].timeWindow_end) { // arrived later than window
+                factor += FACTOR_MULT * (auxTime - nodes[(i+1)%n].timeWindow_end);
+            } else if (nodes[(i+1)%n].departure_time > nodes[(i+1)%n].timeWindow_end) { // left later than needed
+                factor += FACTOR_MULT * (nodes[(i+1)%n].departure_time - nodes[(i+1)%n].timeWindow_end);
+            }
+        } 
+
+        s.objFValue += edges[i].cost;   
     }
 
-    s.objFValue += factor;    
-//    printf("\nFactor = %.2f  |  Final Cost = %.2f", factor, s.objFValue);
-//    getchar();
+    if (factor > 0) {
+        s.objFValue += factor + BAD_SOLUTION_EXTRA;
+    }     
+
     for (int i=0; i<n; i++){
         s.vector[i].key = temp.vector[i].key;
     }
 }
 
 void Decoder(TSol &s) {
-    Decoder2(s);
+    if (s.vector[n-1].key < 0.75) {
+        Decoder1(s);
+    } else {
+        Decoder2(s);
+    }
 }
 
 void Constructive(TSol &s) {

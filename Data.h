@@ -23,7 +23,7 @@ struct TNode {
     int serviceTime;
     int timeWindow_start;
     int timeWindow_end;
-    int departure_time;
+    double departure_time;
 };
 
 struct TEdge {

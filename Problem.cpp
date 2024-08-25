@@ -268,9 +268,11 @@ void Decoder1(TSol &s) {
             if(edges[i].nodeEnd != 0) 
                 nodes[endIndex].departure_time = auxTime + nodes[endIndex].serviceTime;
             
-            if(auxTime > nodes[endIndex].timeWindow_end) { // arrived later than window
-                factor += FACTOR_MULT * (auxTime - nodes[endIndex].timeWindow_end);
-            } else if (nodes[endIndex].departure_time > nodes[endIndex].timeWindow_end) { // left later than needed
+            if(auxTime >= nodes[endIndex].timeWindow_end) { // arrived later than window
+                factor += FACTOR_MULT * (auxTime - nodes[endIndex].timeWindow_end + 1);
+            } 
+            
+            if (nodes[endIndex].departure_time > nodes[endIndex].timeWindow_end) { // left later than needed
                 factor += FACTOR_MULT * (nodes[endIndex].departure_time - nodes[endIndex].timeWindow_end);
             }
         }
@@ -306,7 +308,21 @@ void Decoder1(TSol &s) {
     if (factor > 0) {
         s.objFValue += factor + BAD_SOLUTION_EXTRA;
     }   
-   
+
+    // if (s.objFValue < 1446) {
+    //     double aux = 0.0, sum = 0.0;
+    //     for (int i=0; i<edges.size(); i++) {
+    //         aux += edges[i].time;
+    //         sum += edges[i].cost;
+    //         printf("\n(%d -> %d (%d)) | arrival: %.2f | service: %d | departure: %.2f", edges[i].nodeStart, edges[i].nodeEnd,
+    //             edges[i].mode, aux, nodes[(i+1) % nodes.size()].serviceTime, nodes[(i+1) % nodes.size()].departure_time);
+    //         printf("\t||  (%d) : %d | %d", edges[i].nodeEnd, nodes[(i+1) % nodes.size()].timeWindow_start, nodes[(i+1) % nodes.size()].timeWindow_end);
+    //         printf("\t||  cost: (%.2f)  | sum: (%.3f)", edges[i].cost, sum);
+    //         aux = nodes[(i+1) % nodes.size()].departure_time;
+    //     }
+    //     getchar();
+    // }
+
     // return initial random-key sequence and maintain the solution sequence
     for (int i=0; i<n; i++){
         s.vector[i].key = temp.vector[i].key;
@@ -430,9 +446,11 @@ void Decoder2(TSol &s) {
             if(edges[i].nodeEnd != 0) 
                 nodes[(i+1)%n].departure_time = auxTime + nodes[(i+1)%n].serviceTime;
             
-            if(auxTime > nodes[(i+1)%n].timeWindow_end) { // arrived later than window
-                factor += FACTOR_MULT * (auxTime - nodes[(i+1)%n].timeWindow_end);
-            } else if (nodes[(i+1)%n].departure_time > nodes[(i+1)%n].timeWindow_end) { // left later than needed
+            if(auxTime >= nodes[(i+1)%n].timeWindow_end) { // arrived later than window
+                factor += FACTOR_MULT * (auxTime - nodes[(i+1)%n].timeWindow_end + 1);
+            } 
+            
+            if (nodes[(i+1)%n].departure_time > nodes[(i+1)%n].timeWindow_end) { // left later than needed
                 factor += FACTOR_MULT * (nodes[(i+1)%n].departure_time - nodes[(i+1)%n].timeWindow_end);
             }
         } 

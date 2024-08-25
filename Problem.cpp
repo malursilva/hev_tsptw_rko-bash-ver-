@@ -256,6 +256,7 @@ void Decoder1(TSol &s) {
     int m = edges.size(), endIndex;
     double auxTime = 0.0;
     long double factor = 0.0;
+    double level = initialCharge;
 
     for(int i=0; i<m; i++) {
         endIndex = (i+1) % nodes.size();
@@ -273,37 +274,32 @@ void Decoder1(TSol &s) {
                 factor += FACTOR_MULT * (nodes[endIndex].departure_time - nodes[endIndex].timeWindow_end);
             }
         }
-    }
 
-    // Calculate the costs, checking the battery level
-    double level = initialCharge;
-    for(int i=0; i<m; i++) {
+        // Calculate the costs, checking the battery level
         switch (edges[i].mode) {
             case CC:
                 level += chargeRate * edges[i].time;
-                if(level > maxCharge) 
-                    level = maxCharge;
             break;
 
             case E:
                 level -= dischargeRate * edges[i].time;
-                if (level < 0) {
-                    factor += FACTOR_MULT * level * -1;
-                    level = 0;
-                }
             break;
 
             case B:
                 level -= dischargeRate * edges[i].time;
-                if (level < 0) {
-                    factor += FACTOR_MULT * level * -1;
-                    level = 0;
-                }
             break;
         
             default:
             break;
         }
+
+        if(level > maxCharge) {
+            level = maxCharge;
+        } else if (level < 0.0) {
+            factor += FACTOR_MULT * (level* -1);
+            level = 0.0;
+        }
+
         s.objFValue += edges[i].cost;
     }
 
@@ -426,6 +422,21 @@ void Decoder2(TSol &s) {
         edges[i].cost = getCost(edges[i].nodeStart, edges[i].nodeEnd, edges[i].mode);
         edges[i].time = getTime(edges[i].nodeStart, edges[i].nodeEnd, edges[i].mode);
 
+        auxTime = nodes[i].departure_time + edges[i].time;
+        
+        if (auxTime < nodes[(i+1)%n].timeWindow_start && edges[i].nodeEnd != 0) { // arrive earlier than time window start is valid
+            nodes[(i+1)%n].departure_time = nodes[(i+1)%n].timeWindow_start + nodes[(i+1)%n].serviceTime; // in this case the depature time will be always valid
+        } else {
+            if(edges[i].nodeEnd != 0) 
+                nodes[(i+1)%n].departure_time = auxTime + nodes[(i+1)%n].serviceTime;
+            
+            if(auxTime > nodes[(i+1)%n].timeWindow_end) { // arrived later than window
+                factor += FACTOR_MULT * (auxTime - nodes[(i+1)%n].timeWindow_end);
+            } else if (nodes[(i+1)%n].departure_time > nodes[(i+1)%n].timeWindow_end) { // left later than needed
+                factor += FACTOR_MULT * (nodes[(i+1)%n].departure_time - nodes[(i+1)%n].timeWindow_end);
+            }
+        } 
+
         switch (edges[i].mode) {
             case CC:
                 level += chargeRate * edges[i].time;
@@ -450,21 +461,6 @@ void Decoder2(TSol &s) {
             level = 0.0;
         }
 
-        auxTime = nodes[i].departure_time + edges[i].time;
-        
-        if (auxTime < nodes[(i+1)%n].timeWindow_start && edges[i].nodeEnd != 0) { // arrive earlier than time window start is valid
-            nodes[(i+1)%n].departure_time = nodes[(i+1)%n].timeWindow_start + nodes[(i+1)%n].serviceTime; // in this case the depature time will be always valid
-        } else {
-            if(edges[i].nodeEnd != 0) 
-                nodes[(i+1)%n].departure_time = auxTime + nodes[(i+1)%n].serviceTime;
-            
-            if(auxTime > nodes[(i+1)%n].timeWindow_end) { // arrived later than window
-                factor += FACTOR_MULT * (auxTime - nodes[(i+1)%n].timeWindow_end);
-            } else if (nodes[(i+1)%n].departure_time > nodes[(i+1)%n].timeWindow_end) { // left later than needed
-                factor += FACTOR_MULT * (nodes[(i+1)%n].departure_time - nodes[(i+1)%n].timeWindow_end);
-            }
-        } 
-
         s.objFValue += edges[i].cost;   
     }
 
@@ -478,11 +474,11 @@ void Decoder2(TSol &s) {
 }
 
 void Decoder(TSol &s) {
-    if (s.vector[n-1].key < 0.75) {
+    //if (s.vector[n-1].key < 0.75) {
         Decoder1(s);
-    } else {
-        Decoder2(s);
-    }
+    //} else {
+    //    Decoder2(s);
+    //}
 }
 
 void Constructive(TSol &s) {

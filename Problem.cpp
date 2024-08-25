@@ -309,20 +309,6 @@ void Decoder1(TSol &s) {
         s.objFValue += factor + BAD_SOLUTION_EXTRA;
     }   
 
-    // if (s.objFValue < 1446) {
-    //     double aux = 0.0, sum = 0.0;
-    //     for (int i=0; i<edges.size(); i++) {
-    //         aux += edges[i].time;
-    //         sum += edges[i].cost;
-    //         printf("\n(%d -> %d (%d)) | arrival: %.2f | service: %d | departure: %.2f", edges[i].nodeStart, edges[i].nodeEnd,
-    //             edges[i].mode, aux, nodes[(i+1) % nodes.size()].serviceTime, nodes[(i+1) % nodes.size()].departure_time);
-    //         printf("\t||  (%d) : %d | %d", edges[i].nodeEnd, nodes[(i+1) % nodes.size()].timeWindow_start, nodes[(i+1) % nodes.size()].timeWindow_end);
-    //         printf("\t||  cost: (%.2f)  | sum: (%.3f)", edges[i].cost, sum);
-    //         aux = nodes[(i+1) % nodes.size()].departure_time;
-    //     }
-    //     getchar();
-    // }
-
     // return initial random-key sequence and maintain the solution sequence
     for (int i=0; i<n; i++){
         s.vector[i].key = temp.vector[i].key;

@@ -9,10 +9,10 @@
 #include <stdlib.h>
 
 char instance[100];
-int debug = 1; 
+int debug = 0; 
 int numDecoders = 1;
 int numLS;
-int MAXTIME = 30;
+int MAXTIME = 10;
 int MAXRUNS = 1;
 unsigned MAX_THREADS = 1;
 float OPTIMAL = 0;
@@ -110,7 +110,13 @@ int main(int argc, char *argv[]) {
         timeBest = timeBest / MAXRUNS;
         timeTotal = timeTotal / MAXRUNS;
 
-        WriteSolution(nameMH, sBest, n, instance, timeBest, timeTotal);
+        if(!debug) {
+            WriteSolution(nameMH, sBest, n, timeBest, timeTotal, instance);
+            WriteResults(nameMH, foBest, foAverage, ofvs, timeBest, timeTotal, instance);
+        } else {
+            WriteSolutionScreen(nameMH, sBest, n, timeBest, timeTotal, instance);
+        }
+        
     }
 
     fclose(arq);

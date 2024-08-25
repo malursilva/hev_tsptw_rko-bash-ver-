@@ -474,11 +474,11 @@ void Decoder2(TSol &s) {
 }
 
 void Decoder(TSol &s) {
-    //if (s.vector[n-1].key < 0.75) {
+    if (s.vector[n-1].key < 0.5) {
         Decoder1(s);
-    //} else {
-    //    Decoder2(s);
-    //}
+    } else {
+        Decoder2(s);
+    }
 }
 
 void Constructive(TSol &s) {

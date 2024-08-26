@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
 
         if(!debug) {
             WriteSolution(nameMH, sBest, n, timeBest, timeTotal, instance);
-            WriteResults(nameMH, foBest, foAverage, ofvs, timeBest, timeTotal, instance);
+            WriteResults(nameMH, numDecoders, foBest, foAverage, ofvs, timeBest, timeTotal, instance);
         } else {
             WriteSolutionScreen(nameMH, sBest, n, timeBest, timeTotal, instance);
         }

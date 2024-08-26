@@ -39,7 +39,7 @@ void WriteSolution(char mh[], TSol s, int n, float timeBest, float timeTotal, ch
 	fclose(arq);
 }
 
-void WriteResults(char mh[], double ofv, double ofvAverage, std::vector <double> ofvs, float timeBest, float timeTotal, char instance[]) {
+void WriteResults(char mh[], int decoder, double ofv, double ofvAverage, std::vector <double> ofvs, float timeBest, float timeTotal, char instance[]) {
 	FILE *arq;
 	arq = fopen("./Results/Results.csv", "a");
 
@@ -51,6 +51,7 @@ void WriteResults(char mh[], double ofv, double ofvAverage, std::vector <double>
 
 	fprintf(arq,"\n%s", instance);
 	fprintf(arq,"\t%s", mh);
+	fprintf(arq,"\t%d", decoder);
 	fprintf(arq,"\t%d", (int)ofvs.size());
 	
 	for (unsigned int i=0; i<ofvs.size(); i++){

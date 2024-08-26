@@ -114,5 +114,6 @@ int main(int argc, char *argv[]) {
     }
 
     arq.close();
+    printf("\n\n");
     return 0;
 }

@@ -54,11 +54,11 @@ void WriteResults(char mh[], double ofv, double ofvAverage, std::vector <double>
 	fprintf(arq,"\t%d", (int)ofvs.size());
 	
 	for (unsigned int i=0; i<ofvs.size(); i++){
-		fprintf(arq,"\t%.2lf", ofvs[i]);   
+		fprintf(arq,"\t%.2f", ofvs[i]);   
 	}
 	
-	fprintf(arq,"\t%.1lf", ofv);
-	fprintf(arq,"\t%.1lf", ofvAverage);
+	fprintf(arq,"\t%.1f", ofv);
+	fprintf(arq,"\t%.1f", ofvAverage);
 	fprintf(arq,"\t%.3f", timeBest);
 	fprintf(arq,"\t%.3f", timeTotal);
 

@@ -61,6 +61,7 @@ int main(int argc, char *argv[]) {
         std::vector<double> ofvs;
         ofvs.clear();
         sBest.objFValue = INFINITY;
+        Tstart = Tend = Tbest = (struct timeval){0};
 
         for(int j=0; j<MAXRUNS; j++) {
             if(debug == 1) srand(j+1);
@@ -90,13 +91,13 @@ int main(int argc, char *argv[]) {
                 sBest = bestSolution;
 
             if(bestSolution.objFValue < foBest)
-                foBest += bestSolution.objFValue;
+                foBest = bestSolution.objFValue;
 
             ofvs.push_back(bestSolution.objFValue);
 
             timeBest += ((Tbest.tv_sec  - Tstart.tv_sec) * 1000000u + Tbest.tv_usec - Tstart.tv_usec) / 1.e6;
             timeTotal += ((Tend.tv_sec  - Tstart.tv_sec) * 1000000u + Tend.tv_usec - Tstart.tv_usec) / 1.e6;             
-
+            foAverage += bestSolution.objFValue;
         }
 
         foAverage = foAverage / MAXRUNS;

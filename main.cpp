@@ -7,14 +7,14 @@
 #include <cstring>
 #include <ctime>
 #include <stdlib.h>
+#include <fstream>
+#include <iostream>
 
 char instance[100];
 int debug = 0; 
 int numDecoders = 1;
-int numLS;
 int MAXTIME = 10;
 int MAXRUNS = 1;
-unsigned MAX_THREADS = 1;
 float OPTIMAL = 0;
 
 int n;
@@ -30,17 +30,11 @@ int main(int argc, char *argv[]) {
     strncpy(nameScenario, argv[1], 255);
     int method = atoi(argv[2]);
 
-    FILE *arq;
-    arq = fopen(nameScenario, "r");
+    std::ifstream arq;
+    arq.open(nameScenario, std::ifstream::in);
 
-    if(arq == NULL){
+    if(arq.fail()){
         printf("\nERROR: File %s not found\n", nameScenario);
-        getchar();
-        exit(1);
-    }
-
-    if(fgets(nameTable, sizeof(nameTable), arq) == NULL) {
-        printf("\nERROR: File %s not found\n", nameTable);
         getchar();
         exit(1);
     }
@@ -53,11 +47,11 @@ int main(int argc, char *argv[]) {
     sBest.promising = 0;
     sBest.vector.clear();
 
-    while(!feof(arq)) {
-        if (fscanf(arq, "%30[^ ,\n\t] %u[^ ,\n\t] %u[^ ,\n\t] %u[^ ,\n\t] %u[^ ,\n\t] %u[^ ,\n\t] %u[^ ,\n\t]",
-                        nameTable, &debug, &numDecoders, &numLS, &MAXTIME, &MAXRUNS, &MAX_THREADS) == 0) {
-            exit(1);
-        }
+    while(arq.good()) {
+        // Instance, Debug, #Decoders, #MAXTIME, #MAXRUNS #OPTIMAL
+        arq >> nameTable >> debug >> numDecoders >> MAXTIME >> MAXRUNS >> OPTIMAL;
+        printf("\n\nInstance: %s | Debug: %d | NumDecoders: %d | Maxtime: %d | MaxRuns: %d | Optimal: %.2f", 
+            nameTable, debug, numDecoders, MAXTIME, MAXRUNS, OPTIMAL);
 
         strcpy(instance, nameTable);
 
@@ -68,12 +62,11 @@ int main(int argc, char *argv[]) {
         ofvs.clear();
         sBest.objFValue = INFINITY;
 
-        printf("\n\nInstance: %s \nRun: ", instance);
         for(int j=0; j<MAXRUNS; j++) {
             if(debug == 1) srand(j+1);
             else srand(time(NULL));
 
-            printf("%d ", j+1);
+            printf("\nRun: %d ", j+1);
 
             gettimeofday(&Tstart, NULL);
             gettimeofday(&Tend, NULL);
@@ -119,6 +112,6 @@ int main(int argc, char *argv[]) {
         
     }
 
-    fclose(arq);
+    arq.close();
     return 0;
 }

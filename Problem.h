@@ -51,7 +51,7 @@ static vector<TEdge> edges;
 
 void ReadData(char nameFile[]);
 
-void Decoder(TSol &s);
+void Decoder(TSol &s, int numDecoders);
 
 double CalculateFitness(TSol s);
 

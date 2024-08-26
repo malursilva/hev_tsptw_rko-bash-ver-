@@ -16,7 +16,7 @@ void SA()
     ReadData(nameTable);
 
     int reAnnealing = 0;
-    float currentTime = 0;              // computational time of the search process
+    float currentTime = 0.0;              // computational time of the search process
 
     // run the search process until stop criterion
     while(1) {
@@ -25,7 +25,7 @@ void SA()
             sMelhor.objFValue = INFINITO;
             for (int i=0; i<1000; i++) {
                 TSol ind = CreateInitialSolutions(); 
-                Decoder(ind);
+                Decoder(ind, numDecoders);
                 if (ind.objFValue < sMelhor.objFValue)
                     sMelhor = ind;
             }
@@ -103,8 +103,7 @@ void SA()
                 }
 
                 // calcular a FO
-                Decoder(sViz);
-//                sViz.objFValue =  rand()%(100000000-10000  + 1) + 10000;
+                Decoder(sViz, numDecoders);
                 
                 // calcular o delta
                 delta = sViz.objFValue - s.objFValue;

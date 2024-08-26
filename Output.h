@@ -12,7 +12,7 @@ void WriteSolutionScreen(char mh[], TSol s, int n, float timeBest, float timeTot
     for (int i=n/2; i<n; i++)
 		printf("%d ", s.vector[i].value);
 
-	printf("\nfo: %.2lf", s.objFValue); 
+	printf("\nfo: %.2f", s.objFValue); 
 	printf("\nTotal time: %.3f",timeTotal);
 	printf("\nBest time: %.3f\n\n",timeBest);
 }
@@ -32,7 +32,7 @@ void WriteSolution(char mh[], TSol s, int n, float timeBest, float timeTotal, ch
 	fprintf(arq,"\nSol: ");
 	for (int i=0; i<n; i++)
 		fprintf(arq,"%d ", s.vector[i].value);
-	fprintf(arq,"\nfo: %lf", s.objFValue);
+	fprintf(arq,"\nfo: %.2f", s.objFValue);
   	fprintf(arq,"\nBest time: %.3f",timeBest);
 	fprintf(arq,"\nTotal time:%.3f \n",timeTotal);
 

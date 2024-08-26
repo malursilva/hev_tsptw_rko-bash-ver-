@@ -477,50 +477,25 @@ void Decoder2(TSol &s) {
     }
 }
 
-void Decoder(TSol &s) {
-    if (s.vector[n-1].key < 0.5) {
-        Decoder1(s);
-    } else {
-        Decoder2(s);
-    }
-}
+void Decoder(TSol &s, int numDecoders) {
+    switch (numDecoders) {
+        case 0:
+            if (s.vector[n-1].key < 0.5) {
+                Decoder1(s);
+            } else {
+                Decoder2(s);
+            }
+        break;
 
-void Constructive(TSol &s) {
-    s.objFValue = 0;
-    s.vector.resize(n);
-    
-    // Create an initial solution following the criteria: ordering the customers by the time window start time and setting combustion to all edges modes
-    vector<TSItem> auxNodes;
-    TSItem aux;
-    int index, nodeA, nodeB;
-    auxNodes.reserve(nCustomers);
+        case 1:
+            Decoder1(s);
+        break;
 
-    for(int i=1; i<=nCustomers; i++) {
-        aux.value = i;
-        aux.key = timeWindows[i];
-        auxNodes.push_back(aux);
-    }
-    // Define visit order sorting customers by their time window start time
-    sort(auxNodes.begin(), auxNodes.end(), sortByKey);
-
-    // Define solution key vector
-    double factor = 1.0/nCustomers;
-    double min, max;
-    for(int i=0; i<nCustomers; i++) { // first positions with keys to determined nodes 
-        min = factor * auxNodes[i].value;
-        max = factor * (auxNodes[i].value + 1);
-        s.vector[i].key = ((double)(rand()%10000)/10000.0)*(max-min)+min;
-        s.vector[i].value = auxNodes[i].value;
-    }
-    factor = 1.0/NUM_MODES;
-    min = factor * C;
-    max = factor * (C+1);
-    for(int i=nCustomers; i<n; i++) { // second half with keys to same mode combustion
-        s.vector[i].key = ((double)(rand()%10000)/10000.0)*(max-min)+min;
-        s.vector[i].value = C;
+        case 2:
+            Decoder2(s);
+        break;
     }
 
-    Decoder(s);
 }
 
 void FreeMemoryProblem() {

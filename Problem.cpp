@@ -498,8 +498,18 @@ void Decoder(TSol &s, int numDecoders) {
 
 }
 
-void FreeMemoryProblem() {
+void FreeMemory() {
     nodes.clear();
     edges.clear();
+    c_costMatrix.clear();
+    cc_costMatrix.clear();
+    b_costMatrix.clear();
+    e_costMatrix.clear();
+    c_timeMatrix.clear();
+    cc_timeMatrix.clear();
+    b_timeMatrix.clear();
+    e_timeMatrix.clear();
+    serviceTime.clear();
+    timeWindows.clear();
 }
 

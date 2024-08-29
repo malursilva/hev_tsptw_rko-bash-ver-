@@ -57,7 +57,7 @@ double CalculateFitness(TSol s);
 
 void Constructive(TSol &s);
 
-void FreeMemoryProblem();
+void FreeMemory();
 
 void splitStringIntoIntVector(string line, vector<int> &vector);
 

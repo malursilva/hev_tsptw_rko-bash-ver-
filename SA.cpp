@@ -4,14 +4,7 @@
 			                  GENERAL FUNCTIONS
 *************************************************************************************/
 
-void SA()
-{
-    // free memory with problem data
-    //FreeMemoryProblem();
-
-    // free memory of BRKGA components
-    FreeMemory();
-
+void SA() {
     //read data of the instance
     ReadData(nameTable);
 
@@ -125,14 +118,14 @@ void SA()
 
             T = T * alfa;
             IterT = 0;
+            updateBestSolution(s);
 
             // terminate the search process in MAXTIME
             gettimeofday(&Tend, NULL);
             currentTime = ((Tend.tv_sec  - Tstart.tv_sec) * 1000000u + Tend.tv_usec - Tstart.tv_usec) / 1.e6; 
             
             // stop criterium
-            // if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
-            if (currentTime >= MAXTIME) {  
+            if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {    
                 break;
             }
 
@@ -145,16 +138,13 @@ void SA()
             srand(time(NULL)); 
 
         // stop criterium
-        // if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
-        if (currentTime >= MAXTIME) {  
+        if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
+        //if (currentTime >= MAXTIME) {  
             break;
         }
     }
 
-    // free memory with problem data
-    FreeMemoryProblem();
-
-    // free memory of BRKGA-QL components
+    // free problem components
     FreeMemory();
 }
 
@@ -183,11 +173,6 @@ void updateBestSolution(TSol s) {
         bestSolution = s;
         gettimeofday(&Tbest, NULL);
     }
-}
-
-void FreeMemory() {
-    //methods
-    
 }
 
 double randomico(double min, double max) {

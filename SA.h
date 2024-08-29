@@ -69,36 +69,6 @@ static void updateBestSolution(TSol s);
 static TSol CreateInitialSolutions();
 
 /************************************************************************************
- Method: PEARSON CORRELATION
- Description: calculate the Pearson correlation coefficient between two chromossoms
-*************************************************************************************/
-// static double PearsonCorrelation(std::vector <TVecSol> s1, std::vector <TVecSol> s2);
-
-/************************************************************************************
- Metodo: IC(TSol Pop)
- Description: apply clustering method to find promising solutions in the population
-*************************************************************************************/
-// static void IC();
-
-/************************************************************************************
- Method: LP
- Description: Apply Label Propagation to find communities in the population
-*************************************************************************************/
-// static void LP(std::vector<std::vector<std::pair<int, double> > > listaArestas);
-
-/************************************************************************************
- Method: PROMISINGLP
- Description: Find the promising solutions to represent the communities
-*************************************************************************************/
-// static void PromisingLP();
-
-/************************************************************************************
-Method: FREE MEMORY
-Description: free memory of global vector
-*************************************************************************************/
-static void FreeMemory();
-
-/************************************************************************************
  Method: RANDOMICO
  Description: Generate a double random number between min and max
 *************************************************************************************/

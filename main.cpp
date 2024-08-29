@@ -64,10 +64,10 @@ int main(int argc, char *argv[]) {
         Tstart = Tend = Tbest = (struct timeval){0};
 
         for(int j=0; j<MAXRUNS; j++) {
+            printf("\nRun: %d ", j+1);
+            
             if(debug == 1) srand(j+1);
             else srand(time(NULL));
-
-            printf("\nRun: %d ", j+1);
 
             gettimeofday(&Tstart, NULL);
             gettimeofday(&Tend, NULL);

@@ -1,1 +1,7 @@
 teste
+.vscode
+
+*.csv
+*.exe
+
+.~lock.testScenario.csv#

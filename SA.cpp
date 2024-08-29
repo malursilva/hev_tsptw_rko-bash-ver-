@@ -131,7 +131,8 @@ void SA()
             currentTime = ((Tend.tv_sec  - Tstart.tv_sec) * 1000000u + Tend.tv_usec - Tstart.tv_usec) / 1.e6; 
             
             // stop criterium
-            if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
+            // if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
+            if (currentTime >= MAXTIME) {  
                 break;
             }
 
@@ -144,7 +145,8 @@ void SA()
             srand(time(NULL)); 
 
         // stop criterium
-        if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
+        // if (currentTime >= MAXTIME || floorf(bestSolution.objFValue*10)/10 <= OPTIMAL) {  
+        if (currentTime >= MAXTIME) {  
             break;
         }
     }

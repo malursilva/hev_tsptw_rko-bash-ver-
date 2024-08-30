@@ -118,7 +118,6 @@ void SA() {
 
             T = T * alfa;
             IterT = 0;
-            updateBestSolution(s);
 
             // terminate the search process in MAXTIME
             gettimeofday(&Tend, NULL);

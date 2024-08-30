@@ -52,10 +52,10 @@ void WriteResults(char mh[], int decoder, double ofv, double ofvAverage, std::ve
 	fprintf(arq,"\n%s", instance);
 	fprintf(arq,"\t%s", mh);
 	fprintf(arq,"\t%d", decoder);
-	fprintf(arq,"\t%d", (int)ofvs.size());
+	fprintf(arq,"\t%d\t", (int)ofvs.size());
 	
 	for (unsigned int i=0; i<ofvs.size(); i++){
-		fprintf(arq,"\t%.2f", ofvs[i]);   
+		fprintf(arq," %.2f", ofvs[i]);   
 	}
 	
 	fprintf(arq,"\t%.1f", ofv);

@@ -1,0 +1,432 @@
+
+
+Instance: HEVTSP_1_10_1_TW_0
+Method: SA
+Sol: 1 9 10 8 4 5 6 7 3 2 2 2 2 2 3 2 2 2 2 2 3 
+fo: 1798.94
+Best time: 21.593
+Total time:21.594 
+
+
+Instance: HEVTSP_1_10_1_TW_1
+Method: SA
+Sol: 1 9 10 4 6 5 7 2 8 3 2 2 2 3 2 2 2 2 2 2 3 
+fo: 1798.94
+Best time: 8.038
+Total time:8.038 
+
+
+Instance: HEVTSP_1_10_1_TW_2
+Method: SA
+Sol: 1 8 9 10 5 4 6 7 3 2 2 2 3 2 2 2 2 2 2 2 3 
+fo: 1801.46
+Best time: 8.731
+Total time:8.731 
+
+
+Instance: HEVTSP_1_10_1_TW_3
+Method: SA
+Sol: 1 9 10 8 5 3 4 6 7 2 2 2 2 2 2 2 3 2 2 2 3 
+fo: 1798.94
+Best time: 8.299
+Total time:8.299 
+
+
+Instance: HEVTSP_1_10_1_TW_4
+Method: SA
+Sol: 1 9 10 4 3 6 7 8 2 5 2 2 2 3 2 2 2 2 2 2 3 
+fo: 1798.94
+Best time: 3.693
+Total time:3.694 
+
+
+Instance: HEVTSP_1_10_1_TW_5
+Method: SA
+Sol: 1 9 8 10 4 6 5 7 3 2 2 3 2 2 2 2 2 2 2 2 3 
+fo: 1801.46
+Best time: 1.806
+Total time:1.806 
+
+
+Instance: HEVTSP_1_10_2_TW_0
+Method: SA
+Sol: 2 8 7 5 9 6 1 10 3 4 2 2 2 2 1 3 2 2 3 2 1 
+fo: 1598.18
+Best time: 0.902
+Total time:0.902 
+
+
+Instance: HEVTSP_1_10_2_TW_1
+Method: SA
+Sol: 3 10 1 8 9 4 5 6 7 2 2 3 2 1 2 2 2 2 2 3 1 
+fo: 1610.65
+Best time: 1.142
+Total time:50.000 
+
+
+Instance: HEVTSP_1_10_2_TW_2
+Method: SA
+Sol: 3 10 1 4 9 2 7 5 8 6 2 3 2 2 2 3 2 2 1 2 1 
+fo: 1610.65
+Best time: 0.772
+Total time:50.000 
+
+
+Instance: HEVTSP_1_10_2_TW_3
+Method: SA
+Sol: 2 9 10 7 8 4 5 1 3 6 1 1 1 1 1 1 1 1 1 1 1 
+fo: 1712743.32
+Best time: 0.603
+Total time:50.000 
+
+
+Instance: HEVTSP_1_10_2_TW_4
+Method: SA
+Sol: 2 10 8 4 9 5 3 7 6 1 1 1 1 1 1 1 1 1 1 1 1 
+fo: 4110743.32
+Best time: 0.583
+Total time:50.000 
+
+
+Instance: HEVTSP_1_10_2_TW_5
+Method: SA
+Sol: 2 7 10 8 4 9 3 5 1 6 1 1 1 1 1 1 1 1 1 1 1 
+fo: 7758743.32
+Best time: 0.592
+Total time:50.000 
+
+
+Instance: HEVTSP_1_10_3_TW_0
+Method: SA
+Sol: 9 6 4 7 8 10 1 3 5 2 2 2 2 2 3 2 2 2 2 2 3 
+fo: 1478.90
+Best time: 1.748
+Total time:1.748 
+
+
+Instance: HEVTSP_1_10_3_TW_1
+Method: SA
+Sol: 3 8 6 10 1 2 5 4 7 9 2 2 2 2 3 2 2 2 1 3 1 
+fo: 1531.45
+Best time: 4.949
+Total time:4.949 
+
+
+Instance: HEVTSP_1_10_3_TW_2
+Method: SA
+Sol: 6 2 1 3 8 5 7 10 9 4 2 2 3 2 2 2 1 2 3 2 1 
+fo: 1531.45
+Best time: 3.747
+Total time:3.747 
+
+
+Instance: HEVTSP_1_10_3_TW_3
+Method: SA
+Sol: 3 2 8 6 10 1 5 7 4 9 2 2 2 2 2 3 2 1 2 3 1 
+fo: 1531.45
+Best time: 4.022
+Total time:4.022 
+
+
+Instance: HEVTSP_1_10_3_TW_4
+Method: SA
+Sol: 3 6 8 10 1 4 2 9 5 7 2 2 2 2 3 2 2 3 2 1 1 
+fo: 1531.45
+Best time: 2.497
+Total time:2.497 
+
+
+Instance: HEVTSP_1_10_3_TW_5
+Method: SA
+Sol: 3 6 1 8 10 2 9 5 7 4 2 2 3 2 2 2 3 2 1 2 1 
+fo: 1531.45
+Best time: 2.628
+Total time:2.628 
+
+
+Instance: HEVTSP_2_10_1_TW_0
+Method: SA
+Sol: 1 5 9 4 3 2 8 7 10 6 1 2 3 1 2 2 2 2 2 3 1 
+fo: 7332.75
+Best time: 17.851
+Total time:50.000 
+
+
+Instance: HEVTSP_2_10_1_TW_1
+Method: SA
+Sol: 9 1 5 8 7 2 4 3 6 10 1 3 2 2 2 2 2 2 2 2 1 
+fo: 7457.46
+Best time: 13.799
+Total time:50.000 
+
+
+Instance: HEVTSP_2_10_1_TW_2
+Method: SA
+Sol: 1 5 4 8 6 7 9 10 3 2 1 2 2 2 2 3 2 2 3 2 1 
+fo: 7547.29
+Best time: 2.028
+Total time:50.000 
+
+
+Instance: HEVTSP_2_10_1_TW_3
+Method: SA
+Sol: 7 3 9 4 8 1 2 5 10 6 1 2 2 2 2 3 2 2 2 3 1 
+fo: 7349.80
+Best time: 1.695
+Total time:50.000 
+
+
+Instance: HEVTSP_2_10_1_TW_4
+Method: SA
+Sol: 9 5 3 4 8 7 2 10 1 6 1 2 2 2 2 2 1 2 3 3 1 
+fo: 7489.67
+Best time: 2.540
+Total time:50.000 
+
+
+Instance: HEVTSP_2_10_1_TW_5
+Method: SA
+Sol: 9 1 5 3 4 8 7 2 10 6 2 1 1 2 2 2 1 4 4 1 1 
+fo: 1074769.39
+Best time: 0.945
+Total time:50.000 
+
+
+Instance: HEVTSP_2_10_2_TW_0
+Method: SA
+Sol: 9 1 10 7 4 8 6 3 2 5 1 2 1 2 2 3 2 2 2 2 1 
+fo: 7362.93
+Best time: 1.742
+Total time:1.742 
+
+
+Instance: HEVTSP_2_10_2_TW_1
+Method: SA
+Sol: 9 1 10 4 6 8 7 3 2 5 1 2 1 2 2 3 2 2 2 2 1 
+fo: 7362.93
+Best time: 1.191
+Total time:1.191 
+
+
+Instance: HEVTSP_2_10_2_TW_2
+Method: SA
+Sol: 9 7 10 1 4 3 2 6 8 5 1 2 1 2 2 2 2 2 3 2 1 
+fo: 7362.93
+Best time: 0.896
+Total time:0.896 
+
+
+Instance: HEVTSP_2_10_2_TW_3
+Method: SA
+Sol: 9 7 10 1 4 3 2 6 8 5 1 2 1 2 2 2 2 2 3 2 1 
+fo: 7362.93
+Best time: 0.910
+Total time:0.910 
+
+
+Instance: HEVTSP_2_10_2_TW_4
+Method: SA
+Sol: 9 1 10 7 3 4 6 5 8 2 1 2 1 2 2 2 2 2 3 2 1 
+fo: 7362.93
+Best time: 0.934
+Total time:0.934 
+
+
+Instance: HEVTSP_2_10_2_TW_5
+Method: SA
+Sol: 9 7 10 1 4 6 3 2 8 5 1 2 1 2 2 2 2 2 3 2 1 
+fo: 7362.93
+Best time: 0.952
+Total time:0.952 
+
+
+Instance: HEVTSP_2_10_3_TW_0
+Method: SA
+Sol: 5 7 4 6 10 9 1 8 2 3 1 2 2 2 2 2 2 3 2 3 1 
+fo: 7290.82
+Best time: 2.263
+Total time:2.263 
+
+
+Instance: HEVTSP_2_10_3_TW_1
+Method: SA
+Sol: 5 4 9 1 8 6 10 7 3 2 1 2 2 2 3 2 2 2 3 2 1 
+fo: 7290.82
+Best time: 2.229
+Total time:2.229 
+
+
+Instance: HEVTSP_2_10_3_TW_2
+Method: SA
+Sol: 5 4 9 10 6 7 8 3 2 1 1 2 2 2 2 2 3 3 2 2 1 
+fo: 7290.82
+Best time: 1.869
+Total time:1.869 
+
+
+Instance: HEVTSP_2_10_3_TW_3
+Method: SA
+Sol: 5 4 9 2 6 1 3 10 7 8 1 2 2 2 2 2 3 2 2 3 1 
+fo: 7290.82
+Best time: 1.371
+Total time:1.371 
+
+
+Instance: HEVTSP_2_10_3_TW_4
+Method: SA
+Sol: 5 7 4 1 8 6 2 9 10 3 1 2 2 2 3 2 2 2 2 3 1 
+fo: 7290.82
+Best time: 1.433
+Total time:1.434 
+
+
+Instance: HEVTSP_2_10_3_TW_5
+Method: SA
+Sol: 5 4 9 8 2 6 3 10 1 7 1 2 2 3 2 2 3 2 2 2 1 
+fo: 7290.82
+Best time: 0.859
+Total time:0.859 
+
+
+Instance: HEVTSP_3_10_1_TW_0
+Method: SA
+Sol: 5 7 3 1 2 4 8 10 9 6 1 2 2 3 2 2 2 1 2 2 1 
+fo: 12747.22
+Best time: 26.893
+Total time:41.579 
+
+
+Instance: HEVTSP_3_10_1_TW_1
+Method: SA
+Sol: 1 7 3 10 9 6 8 5 4 2 2 2 3 3 3 2 1 1 3 2 1 
+fo: 12759.24
+Best time: 8.159
+Total time:8.159 
+
+
+Instance: HEVTSP_3_10_1_TW_2
+Method: SA
+Sol: 1 7 3 10 9 6 8 4 5 2 2 2 3 3 3 2 1 3 1 2 1 
+fo: 12759.24
+Best time: 8.044
+Total time:8.044 
+
+
+Instance: HEVTSP_3_10_1_TW_3
+Method: SA
+Sol: 1 7 3 5 10 9 6 8 4 2 2 2 3 1 3 3 2 1 3 2 1 
+fo: 12759.24
+Best time: 3.616
+Total time:3.616 
+
+
+Instance: HEVTSP_3_10_1_TW_4
+Method: SA
+Sol: 1 7 3 10 9 6 5 8 4 2 2 2 3 3 3 2 1 1 3 2 1 
+fo: 12759.24
+Best time: 13.018
+Total time:40.610 
+
+
+Instance: HEVTSP_3_10_1_TW_5
+Method: SA
+Sol: 1 7 3 10 9 6 8 4 2 5 2 2 3 3 3 2 1 3 2 1 1 
+fo: 12759.24
+Best time: 3.480
+Total time:3.480 
+
+
+Instance: HEVTSP_3_10_2_TW_0
+Method: SA
+Sol: 5 2 10 3 4 6 7 8 1 9 1 3 1 2 2 2 1 2 2 2 1 
+fo: 12804.00
+Best time: 9.146
+Total time:50.000 
+
+
+Instance: HEVTSP_3_10_2_TW_1
+Method: SA
+Sol: 5 2 10 8 3 4 6 1 7 9 1 3 1 2 2 2 2 2 1 2 1 
+fo: 12804.00
+Best time: 4.515
+Total time:50.000 
+
+
+Instance: HEVTSP_3_10_2_TW_2
+Method: SA
+Sol: 5 2 3 1 7 4 8 6 9 10 1 3 1 2 2 2 2 1 2 2 1 
+fo: 12894.19
+Best time: 3.527
+Total time:50.000 
+
+
+Instance: HEVTSP_3_10_2_TW_3
+Method: SA
+Sol: 5 2 10 8 3 9 4 1 7 6 1 3 1 2 2 2 2 2 1 2 1 
+fo: 12804.00
+Best time: 1.977
+Total time:50.000 
+
+
+Instance: HEVTSP_3_10_2_TW_4
+Method: SA
+Sol: 5 2 10 1 3 4 8 7 9 6 1 3 1 2 2 2 2 1 2 2 1 
+fo: 12804.00
+Best time: 4.131
+Total time:50.000 
+
+
+Instance: HEVTSP_3_10_2_TW_5
+Method: SA
+Sol: 5 2 3 7 10 1 6 8 4 9 1 3 1 2 2 2 1 2 2 2 1 
+fo: 12894.19
+Best time: 5.420
+Total time:50.000 
+
+
+Instance: HEVTSP_3_10_3_TW_0
+Method: SA
+Sol: 2 1 4 8 9 5 10 6 7 3 1 2 2 2 1 2 3 2 2 2 1 
+fo: 12935.48
+Best time: 26.126
+Total time:47.898 
+
+
+Instance: HEVTSP_3_10_3_TW_1
+Method: SA
+Sol: 2 9 1 4 8 10 5 6 7 3 1 1 2 2 2 3 2 2 2 2 1 
+fo: 12935.48
+Best time: 16.861
+Total time:21.432 
+
+
+Instance: HEVTSP_3_10_3_TW_2
+Method: SA
+Sol: 2 1 4 10 8 5 6 7 3 9 1 2 2 3 2 2 2 2 2 1 1 
+fo: 12935.48
+Best time: 10.577
+Total time:17.259 
+
+
+Instance: HEVTSP_3_10_3_TW_3
+Method: SA
+Sol: 2 1 4 8 5 6 9 10 7 3 1 2 2 2 2 2 1 3 2 2 1 
+fo: 12935.48
+Best time: 12.004
+Total time:12.004 
+
+
+Instance: HEVTSP_3_10_3_TW_4
+Method: SA
+Sol: 2 10 1 4 8 5 6 9 7 3 1 3 2 2 2 2 2 1 2 2 1 
+fo: 12935.48
+Best time: 9.216
+Total time:9.216 
+
+
+Instance: HEVTSP_3_10_3_TW_5
+Method: SA
+Sol: 2 1 4 8 5 6 7 10 3 9 1 2 2 2 2 2 2 3 2 1 1 
+fo: 12935.48
+Best time: 14.371
+Total time:14.371 

@@ -1,4 +1,4 @@
-| Instance | Mh | Decoder | Num Runs |              Runs              | Final objValue | Average objValue | Time Best | Time Total |
+ Instance  Mh  Decoder  Num Runs               Runs               Final objValue  Average objValue  Time Best  Time Total 
 
 HEVTSP_1_08_1_TW_0	SA	1	5	 1830.69 1830.69 1830.69 1830.69 1830.69	1830.7	1830.7	0.624	0.624
 HEVTSP_1_08_1_TW_1	SA	1	5	 1849.37 1849.37 1849.37 1849.37 1849.37	1849.4	1849.4	0.215	0.215

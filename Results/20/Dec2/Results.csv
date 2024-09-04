@@ -1,4 +1,4 @@
-| Instance | Mh | Decoder | Num Runs |              Runs              | Final objValue | Average objValue | Time Best | Time Total |
+ Instance  Mh  Decoder  Num Runs               Runs               Final objValue  Average objValue  Time Best  Time Total 
 
 HEVTSP_1_20_1_TW_0	SA	2	5	 2021.84 2021.84 2021.84 2015.99 2015.99	2016.0	2019.5	42.956	100.002
 HEVTSP_1_20_1_TW_1	SA	2	5	 2015.99 2015.99 2015.99 2021.84 2015.99	2016.0	2017.2	54.397	100.001

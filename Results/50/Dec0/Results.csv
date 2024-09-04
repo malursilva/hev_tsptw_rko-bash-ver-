@@ -1,4 +1,4 @@
-| Instance | Mh | Decoder | Num Runs |                       Runs                    | Final objValue | Average objValue | Time Best | Time Total |
+ Instance  Mh  Decoder  Num Runs                        Runs                     Final objValue  Average objValue  Time Best  Time Total 
 
 HEVTSP_1_50_1_TW_0	SA	0	5	 3117.55 3139.46 3135.13 3242.78 3265.74	                3117.5	    3180.1	        98.458	    250.006
 HEVTSP_1_50_1_TW_1	SA	0	5	 3390.98 3089.41 3250.57 3406.67 3814.69	                3089.4	    3390.5	        111.779	    250.004
@@ -42,7 +42,7 @@ HEVTSP_3_50_1_TW_1	SA	0	5	 19460.71 18767.86 20493.43 1020990.03 1024564.29	    
 -------------------------------------------------------------------------------------------------------------------------------------------
                         Segunda Tentativa de Execução - MAX_TIME = 500
 -------------------------------------------------------------------------------------------------------------------------------------------
-| Instance | Mh | Decoder | Num Runs |                       Runs                    | Final objValue | Average objValue | Time Best | Time Total |
+ Instance  Mh  Decoder  Num Runs                        Runs                     Final objValue  Average objValue  Time Best  Time Total 
 
 HEVTSP_1_50_1_TW_0	SA	0	5	 3152.10 3184.72 3192.53 3151.59 3186.50	                3151.6	        3173.5	        165.055	    500.006
 HEVTSP_1_50_1_TW_1	SA	0	5	 3251.96 3508.24 3590.69 3327.98 3568.71	                3252.0	        3449.5	        240.812	    500.003
